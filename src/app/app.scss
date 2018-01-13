@@ -14,6 +14,9 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+@import "../theme/icons";
+
+// Global navbar
 .tabs-ios .tabbar, .tabbar {
     bottom: 0px;
     border-top: solid 3px #243B6B;
@@ -21,4 +24,27 @@
     -webkit-box-shadow: 0px -4px 3px rgba(50, 50, 50, 0.75);
     -moz-box-shadow: 0px -4px 3px rgba(50, 50, 50, 0.75);
     box-shadow: 0px -4px 3px rgba(36, 59, 107, 0.41);
+
+    a[aria-selected=true], a[aria-selected=false] {
+
+        &:nth-child(3) {
+            max-width: 56px;
+            min-height: 56px;
+            border-top-left-radius: 90px;
+            border-top-right-radius: 90px;
+            border-bottom-right-radius: 90px;
+            border-bottom-left-radius: 90px;
+            bottom: 25px;
+            background-color: rgb(36, 59, 107);
+            border-top-width: 3px;
+            border-top-style: solid;
+            border-top-color: rgb(36, 59, 107);
+            -webkit-box-shadow: rgba(50, 50, 50, 0.74902) 0px -4px 3px;
+            box-shadow: rgba(36, 59, 107, 0.407843) 0px -4px 3px;
+
+            .icon {
+                color: white;
+            }
+        }
+    }
 }
