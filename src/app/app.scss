@@ -24,9 +24,25 @@
     -webkit-box-shadow: 0px -4px 3px rgba(50, 50, 50, 0.75);
     -moz-box-shadow: 0px -4px 3px rgba(50, 50, 50, 0.75);
     box-shadow: 0px -4px 3px rgba(36, 59, 107, 0.41);
+    a[aria-selected=true] {
+        .icon, .tab-button-text {
+            color: #65CDBC !important;
+        }
+    }
+
+    a[aria-selected=false] {
+        .icon, .tab-button-text {
+            color: #879DAF !important;
+        }
+    }
 
     a[aria-selected=true], a[aria-selected=false] {
-
+        .icon  {
+            &::before {
+                width: 20px;
+                height: 20px;
+            }
+        }
         &:nth-child(3) {
             max-width: 56px;
             min-height: 56px;
@@ -43,7 +59,9 @@
             box-shadow: rgba(36, 59, 107, 0.407843) 0px -4px 3px;
 
             .icon {
-                color: white;
+                position: relative;
+                top: -3px;
+                color: white !important;
             }
         }
     }
