@@ -66,3 +66,25 @@
         }
     }
 }
+
+//Alert information
+.alert-information {
+    ion-backdrop {
+        opacity: 0.1 !important;
+    }
+    .alert-wrapper {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%) !important;
+        bottom: 100Px;
+        border-radius: 11px;
+        min-width: 95%;
+        .alert-message {
+            padding: 0 24px !important;
+        }
+    }
+
+    .alert-head, .alert-button-group {
+        display: none;
+    }
+}
