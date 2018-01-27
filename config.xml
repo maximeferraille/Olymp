@@ -84,4 +84,10 @@
     <plugin name="phonegap-plugin-push" spec="^2.1.2" />
     <plugin name="cordova-plugin-qrscanner" spec="^2.5.0" />
     <plugin name="cordova-plugin-screen-orientation" spec="^2.0.2" />
+    <plugin name="ionic-plugin-deeplinks" spec="^1.0.15">
+        <variable name="URL_SCHEME" value="olymp" />
+        <variable name="DEEPLINK_SCHEME" value="https" />
+        <variable name="DEEPLINK_HOST" value="olympjo.com" />
+        <variable name="ANDROID_PATH_PREFIX" value="/" />
+    </plugin>
 </widget>
