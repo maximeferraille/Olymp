@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\User;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -24,6 +25,8 @@ class UserController extends Controller
      */
     public function newUser(Request $request)
     {
+        header("Access-Control-Allow-Origin: *");
+
         $mail = $request->query->get('mail');
 
 
@@ -44,7 +47,24 @@ class UserController extends Controller
 
         $result = RandomToken(10);
 
-        return new JsonResponse($result, 200);
+        $product = $this->getDoctrine()
+            ->getRepository(User::class)
+            ->findOneBy([
+                "mail" => $mail
+            ]);
+
+
+        if (!$product) {
+            dump('sa exitste pas');
+
+        }else{
+            return new JsonResponse($result, 200);
+
+        }
+
+
+
+
     }
 
 }
