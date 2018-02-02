@@ -28,6 +28,7 @@ class UserController extends Controller
         header("Access-Control-Allow-Origin: *");
 
         $mail = $request->query->get('mail');
+        $ip = $_SERVER['REMOTE_ADDR'];
 
 
         function RandomToken($length = 32){
@@ -64,6 +65,7 @@ class UserController extends Controller
 
             $NewUser->setMail($mail);
             $NewUser->setTokenAuth($token);
+            $NewUser->setIpAdress($ip);
             $em->persist($NewUser);
             $em->flush();
 
