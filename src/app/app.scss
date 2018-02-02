@@ -16,6 +16,17 @@
 // automatically applied to the <body> element in the app.
 @import "../theme/icons";
 
+// Center ion title for all device
+ion-title {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 0 90px 1px;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+}
+
 // Global navbar
 .tabs-ios .tabbar, .tabbar {
     bottom: 0px;

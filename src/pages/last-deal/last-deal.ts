@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { GlobalService } from '../../services/globalService';
+import { AlertService } from '../../services/alertService';
 
 /**
  * Generated class for the LastDealPage page.
@@ -16,7 +16,7 @@ import { GlobalService } from '../../services/globalService';
 })
 export class LastDealPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public service: GlobalService) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public service: AlertService) {
   }
 
   ionViewDidLoad() {

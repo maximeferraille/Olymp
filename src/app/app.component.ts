@@ -4,10 +4,10 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HomePage } from '../pages/home/home';
-import { GlobalService } from '../services/globalService';
+import { AlertService } from '../services/alertService';
 @Component({
   templateUrl: 'app.html',
-  providers: [[GlobalService]]
+  providers: [[AlertService]]
 })
 export class MyApp {
   rootPage:any = HomePage;
