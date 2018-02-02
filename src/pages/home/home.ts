@@ -30,19 +30,22 @@ export class HomePage {
   }
 
   checkMail() {
-    // this.restProvider.newUser(this.user).then((result) => {
-    //   console.log(result);
-    // }, (err) => {
-    //   console.log(err);
-    // });
+    this.restProvider.newUser(this.user).then((result) => {
+      console.log(result);
+      if (result != true) {
+        this.navCtrl.push(MagicLinkPage, {
+          email: this.user.email
+        });
+      } else {
+        console.log(result+'inscrit');
+      }
+    }, (err) => {
+      console.log(err);
+    });
 
     // this.push(MarketPage);
     // let nav = this.appCtrl.getRootNav();
     // nav.setRoot(TabsPage);
-
-    this.navCtrl.push(MagicLinkPage, {
-      email: this.user.email
-    });
   }
 
 }

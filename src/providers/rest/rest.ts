@@ -16,7 +16,7 @@ export class RestProvider {
 
   newUser(data) {
     return new Promise((resolve, reject) => {
-      this.http.post(this.apiUrl+'/user/new', JSON.stringify(data))
+      this.http.get(this.apiUrl+'/user/new?mail='+JSON.stringify(data))
         .subscribe(res => {
           resolve(res);
         }, (err) => {

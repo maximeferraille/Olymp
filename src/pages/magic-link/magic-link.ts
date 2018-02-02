@@ -19,4 +19,8 @@ export class MagicLinkPage {
     console.log(this.currentEmail);
   }
 
+  mailto() {
+    window.open('mailto:'+this.currentEmail);
+  }
+
 }
