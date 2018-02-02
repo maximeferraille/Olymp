@@ -1,7 +1,9 @@
 import { Component, ViewChild } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { TabsPage } from '../tabs/tabs';
+// import { TabsPage } from '../tabs/tabs';
+import { MagicLinkPage } from '../magic-link/magic-link';
 import { App, ViewController, Slides } from 'ionic-angular';
+import { RestProvider } from '../../providers/rest/rest';
 
 @Component({
   selector: 'page-home',
@@ -10,10 +12,13 @@ import { App, ViewController, Slides } from 'ionic-angular';
 export class HomePage {
   @ViewChild(Slides) slides: Slides;
 
+  user = { email: '' };
+
   constructor(
     public navCtrl: NavController,
     public viewCtrl: ViewController,
     public appCtrl: App,
+    public restProvider: RestProvider
   ) {}
 
   changeSlide() {
@@ -25,9 +30,19 @@ export class HomePage {
   }
 
   checkMail() {
-    let nav = this.appCtrl.getRootNav();
-    nav.setRoot(TabsPage);
+    // this.restProvider.newUser(this.user).then((result) => {
+    //   console.log(result);
+    // }, (err) => {
+    //   console.log(err);
+    // });
+
     // this.push(MarketPage);
+    // let nav = this.appCtrl.getRootNav();
+    // nav.setRoot(TabsPage);
+
+    this.navCtrl.push(MagicLinkPage, {
+      email: this.user.email
+    });
   }
 
 }

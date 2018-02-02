@@ -5,7 +5,7 @@
       <h1 margin-horizontal class="home-slide--mainTitle">Olymp</h1>
       <img margin-horizontal class="home-slide--img1" src="assets/imgs/logo.png" alt="logo">
       <h2 margin-horizontal class="home-slide--title">An other chance<br>to grab your tickets !</h2>
-      <p margin-horizontal class="home-slide--text">If you had no luck finding your olympic event ticket, you can buy one by participating in bids.</p>
+      <p margin-horizontal class="light-text home-slide--text">If you had no luck finding your olympic event ticket, you can buy one by participating in bids.</p>
       <button class="home-slide--button" (click)="changeSlide()">
           <ion-icon name="ArrowRight"></ion-icon>
       </button>
@@ -14,7 +14,7 @@
     <ion-slide class="home-slide">
       <img margin-horizontal class="home-slide--img2" src="assets/imgs/slide2.png" alt="">
       <h2 margin-horizontal class="home-slide--title">Buy & sell<br>It's easy.</h2>
-      <p margin-horizontal class="home-slide--text">An easy and secure way to buy and sell your tickets. You can also validate them quickly !</p>
+      <p margin-horizontal class="light-text home-slide--text">An easy and secure way to buy and sell your tickets. You can also validate them quickly !</p>
       <button class="home-slide--button" (click)="changeSlide()">
           <ion-icon name="ArrowRight"></ion-icon>
       </button>
@@ -22,10 +22,12 @@
 
     <ion-slide class="home-slide">
       <img class="home-slide--img3" src="assets/imgs/slide3.png" alt="">
-      <div class="home-slide--form">
-        <ion-input type="email" placeholder="Email"></ion-input>
-        <button (click)="checkMail()">Continue</button>
-      </div>
+      <form (ngSubmit)="checkMail()">
+        <div class="home-slide--form">
+          <ion-input type="email" placeholder="Email" [(ngModel)]="user.email" name="email" required></ion-input>
+          <button type="submit">Continue</button>
+        </div>
+      </form>
       <h2 style="margin-top: 76px;" class="home-slide--title">Easy<br>connection</h2>
       <button class="home-slide--button" (click)="changeSlide()">
           <ion-icon name="ArrowLeft"></ion-icon>
