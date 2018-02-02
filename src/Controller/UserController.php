@@ -2,22 +2,28 @@
 
 namespace App\Controller;
 
-use App\Entity\User;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
-use Twig\Environment;
 
-class LinksController extends Controller {
+class UserController extends Controller
+{
+    /**
+     * @Route("/user", name="user")
+     */
+    public function index()
+    {
+        // replace this line with your own code!
+        return $this->render('@Maker/demoPage.html.twig', [ 'path' => str_replace($this->getParameter('kernel.project_dir').'/', '', __FILE__) ]);
+    }
 
     /**
-     * @Route("/user/create/",name="create_user_first")
+     * @Route("/user/new", name="user_new")
      */
-    public function createAction(Environment $twig, Request $request)
+    public function newUser(Request $request)
     {
-
         $mail = $request->query->get('mail');
 
 
@@ -36,27 +42,9 @@ class LinksController extends Controller {
             }
         }
 
+        $result = RandomToken(10);
 
-
-
-
-        $em = $this->getDoctrine()->getManager();
-        $user = new User();
-
-        $user->setMail($mail);
-        $user->setTokenAuth(RandomToken(10));
-        $user->setIpAdress($_SERVER['REMOTE_ADDR']);
-
-
-
-
-        $em->persist($user);
-
-        $em->flush();
-
-
-        return new Response($twig->render('base.html.twig'));
-
+        return new JsonResponse($result, 200);
     }
 
 }
