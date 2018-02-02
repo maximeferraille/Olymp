@@ -16,6 +16,19 @@
 // automatically applied to the <body> element in the app.
 @import "../theme/icons";
 
+h1 {
+    line-height: 35px;
+    font-size: 25px;
+    color: #1D2027;
+}
+
+.light-text {
+    line-height: normal;
+    font-size: 13px;
+    text-align: center;
+    color: #9EA4AF;
+}
+
 // Center ion title for all device
 ion-title {
     position: absolute;

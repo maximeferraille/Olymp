@@ -1,3 +1,42 @@
 page-magic-link {
+    button {
+        background: rgba(36, 59, 107, 0.98);
+        border-radius: 5Px;
+        height: 50px;
+        width: 75%;
+        color: white;
+        font-size: 15Px;
 
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+        margin-top: 26px;
+    }
+
+    h1 {
+        text-align: center;
+        margin-bottom: 22px;
+    }
+
+    p {
+        margin-bottom: 76px;
+    }
+
+    img {
+        margin-top: 72px; 
+        width: 37.6%;
+        position: relative;
+        left: 55%;
+        transform: translateX(-45%); 
+    }
+
+    .container-content {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 90%;
+        &:nth-child(2) {
+            bottom: 0;
+        }
+    }
 }
