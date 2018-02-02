@@ -45,19 +45,23 @@ class UserController extends Controller
             }
         }
 
-        $result = RandomToken(10);
+        $token = RandomToken(10);
 
-        $product = $this->getDoctrine()
+        $user = $this->getDoctrine()
             ->getRepository(User::class)
             ->findOneBy([
                 "mail" => $mail
             ]);
 
 
-        if (!$product) {
-            dump('sa exitste pas');
+
+
+        if (!$user) {
+            $result = false;
+            return new JsonResponse($result, 200);
 
         }else{
+            $result = true;
             return new JsonResponse($result, 200);
 
         }
