@@ -15,6 +15,7 @@ import { ScannerPage } from '../pages/scanner/scanner';
 import { TicketsPage } from '../pages/tickets/tickets';
 import { ProfilPage } from '../pages/profil/profil';
 import { MagicLinkPage } from '../pages/magic-link/magic-link';
+import { GeneratePasswordPage } from '../pages/generate-password/generate-password';
 import { RestProvider } from '../providers/rest/rest';
 
 
@@ -28,7 +29,8 @@ import { RestProvider } from '../providers/rest/rest';
     MarketPage,
     ScannerPage,
     TicketsPage,
-    ProfilPage
+    ProfilPage,
+    GeneratePasswordPage
   ],
   imports: [
     BrowserModule,
@@ -45,7 +47,8 @@ import { RestProvider } from '../providers/rest/rest';
     MarketPage,
     ScannerPage,
     TicketsPage,
-    ProfilPage
+    ProfilPage,
+    GeneratePasswordPage
   ],
   providers: [
     Deeplinks,

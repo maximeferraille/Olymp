@@ -6,8 +6,8 @@ import { Deeplinks } from '@ionic-native/deeplinks';
 
 import { HomePage } from '../pages/home/home';
 import { GeneratePasswordPage } from '../pages/generate-password/generate-password';
-import { GlobalService } from '../services/globalService';
 import { AlertService } from '../services/alertService';
+
 @Component({
   templateUrl: 'app.html',
   providers: [[AlertService]]
