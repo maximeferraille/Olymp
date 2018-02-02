@@ -57,8 +57,21 @@ class UserController extends Controller
 
 
         if (!$user) {
+
+            $em = $this->getDoctrine()->getManager();
+
+            $NewUser = new User();
+
+            $NewUser->setMail($mail);
+            $NewUser->setTokenAuth($token);
+            $em->persist($NewUser);
+            $em->flush();
+
+
+
+
             $result = false;
-            return new JsonResponse($result, 200);
+            return new JsonResponse($NewUser->getId(), 200);
 
         }else{
             $result = true;
