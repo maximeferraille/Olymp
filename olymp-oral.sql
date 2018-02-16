@@ -1,0 +1,17 @@
+INSERT INTO olymp_dev.sports (code, name) VALUES ('Closing Ceremony', 'ZC');
+INSERT INTO olymp_dev.sports (code, name) VALUES ('Opening Ceremony', 'ZO');
+INSERT INTO olymp_dev.sports (code, name) VALUES ('Alpine Skiing', 'AS');
+INSERT INTO olymp_dev.sports (code, name) VALUES ('Biathlon', 'BT');
+INSERT INTO olymp_dev.sports (code, name) VALUES ('Bobsleigh', 'BS');
+INSERT INTO olymp_dev.sports (code, name) VALUES ('Cross-Country Skiing', 'CC');
+INSERT INTO olymp_dev.sports (code, name) VALUES ('Curling', 'CU');
+INSERT INTO olymp_dev.sports (code, name) VALUES ('Figure Skating', 'FS');
+INSERT INTO olymp_dev.sports (code, name) VALUES ('Freestyle Skiing', 'FR');
+INSERT INTO olymp_dev.sports (code, name) VALUES ('Ice Hockey', 'IH');
+INSERT INTO olymp_dev.sports (code, name) VALUES ('Luge', 'LG');
+INSERT INTO olymp_dev.sports (code, name) VALUES ('Nordic Combined', 'NC');
+INSERT INTO olymp_dev.sports (code, name) VALUES ('Short Track Speed Skating', 'ST');
+INSERT INTO olymp_dev.sports (code, name) VALUES ('Skeleton', 'SN');
+INSERT INTO olymp_dev.sports (code, name) VALUES ('Ski Jumping', 'SJ');
+INSERT INTO olymp_dev.sports (code, name) VALUES ('Snowboard', 'SB');
+INSERT INTO olymp_dev.sports (code, name) VALUES ('Speed Skating', 'SS');
