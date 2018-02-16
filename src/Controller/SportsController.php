@@ -2,18 +2,56 @@
 
 namespace App\Controller;
 
+
+use App\Entity\Sports;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 class SportsController extends Controller
 {
     /**
      * @Route("/sports", name="sports")
      */
-    public function index()
+    public function getSports()
     {
-        // replace this line with your own code!
-        return $this->render('@Maker/demoPage.html.twig', [ 'path' => str_replace($this->getParameter('kernel.project_dir').'/', '', __FILE__) ]);
+
+        $sports = $this->getDoctrine()
+            ->getRepository(Sports::class)
+            ->findAll();
+
+        if (!$sports) {
+            throw $this->createNotFoundException(
+                'Aucun sports'
+            );
+        }
+
+
+
+
+        $data = json_encode($sports);
+
+        dump($data);
+
+
+
+
+
+
+
+
+        return new JsonResponse($data, 200);
+
+    }
+
+
+
+    /**
+     * @Route("/sports/new", name="sports_new")
+     */
+    public function newSports()
+    {
+
+
     }
 }
