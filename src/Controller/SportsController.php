@@ -2,11 +2,11 @@
 
 namespace App\Controller;
 
+
 use App\Entity\Sports;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\HttpFoundation\Response;
 
 class SportsController extends Controller
 {
@@ -51,6 +51,7 @@ class SportsController extends Controller
      */
     public function newSports()
     {
+
 
     }
 }
