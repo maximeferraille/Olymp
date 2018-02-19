@@ -24,4 +24,26 @@ export class RestProvider {
         });
     });
   }
+
+  getEvents(){
+    return new Promise((resolve, reject) => {
+      this.http.get(this.apiUrl+'/events')
+        .subscribe(res => {
+          resolve(res);
+        }, (err) => {
+          reject(err);
+        });
+    });
+  }
+
+  getSports(){
+    return new Promise((resolve, reject) => {
+      this.http.get(this.apiUrl+'/sports')
+        .subscribe(res => {
+          resolve(res);
+        }, (err) => {
+          reject(err);
+        });
+    });
+  }
 }
