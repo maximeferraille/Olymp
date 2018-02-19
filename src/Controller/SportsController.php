@@ -4,6 +4,7 @@ namespace App\Controller;
 
 
 use App\Entity\Sports;
+use Doctrine\DBAL\Connection;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -13,12 +14,11 @@ class SportsController extends Controller
     /**
      * @Route("/sports", name="sports")
      */
-    public function getSports()
+    public function getSports(Connection $connection)
     {
 
-        $sports = $this->getDoctrine()
-            ->getRepository(Sports::class)
-            ->findAll();
+        $sports = $connection->fetchAll('SELECT * FROM sports');
+
 
         if (!$sports) {
             throw $this->createNotFoundException(
@@ -26,21 +26,7 @@ class SportsController extends Controller
             );
         }
 
-
-
-
-        $data = json_encode($sports);
-
-        dump($data);
-
-
-
-
-
-
-
-
-        return new JsonResponse($data, 200);
+        return new JsonResponse($sports, 200);
 
     }
 
