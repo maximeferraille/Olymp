@@ -17,6 +17,10 @@ class SportsController extends Controller
     public function getSports(Connection $connection)
     {
 
+
+        header("Access-Control-Allow-Origin: *");
+
+
         $sports = $connection->fetchAll('SELECT * FROM sports');
 
 
