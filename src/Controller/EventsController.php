@@ -16,6 +16,9 @@ class EventsController extends Controller
     public function allEvents(Connection $connection)
     {
 
+        header("Access-Control-Allow-Origin: *");
+
+
         $events = $connection->fetchAll("SELECT * FROM events");
 
 
@@ -24,8 +27,7 @@ class EventsController extends Controller
                 'Aucun evenements'
             );
         }
-
-
+        
         return new JsonResponse($events, 200);
 
 
