@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -16,6 +18,7 @@ class User
 
         $this->ins_date = new \DateTime();
 
+        $this->tickets = new ArrayCollection();
     }
 
     /**
@@ -51,6 +54,29 @@ class User
      * @ORM\Column(type="datetime", nullable=false)
      */
     private $ins_date;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Tickets", mappedBy="user")
+     */
+    private $tickets;
+
+    /**
+     * @return mixed
+     * @return Collection|Tickets[]
+     */
+    public function getTickets()
+    {
+        return $this->tickets;
+    }
+
+    /**
+     * @param mixed $tickets
+     */
+    public function setTickets($tickets)
+    {
+        $this->tickets = $tickets;
+    }
+
 
     /**
      * @return mixed

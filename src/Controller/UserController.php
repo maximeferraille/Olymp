@@ -3,11 +3,15 @@
 namespace App\Controller;
 
 use App\Entity\User;
+use Doctrine\DBAL\Connection;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Doctrine\DBAL\Types\IntegerType;
+
 
 class UserController extends Controller
 {
@@ -81,6 +85,39 @@ class UserController extends Controller
 
         }
 
+
+
+
+    }
+
+
+    /**
+     * @Route("/user/pincode", name="set_pincode")
+     * @Method("POST")
+     */
+    public function setPassword(Connection $connection,Request $request)
+    {
+
+
+        header("Access-Control-Allow-Origin: *");
+
+        $pincode = $request->request->get('pincode');
+        $id = $request->request->get('id');
+
+        dump($id);
+
+        $sql = "UPDATE user
+                SET pincode = :pincode
+                WHERE id = :id";
+
+        $stmt = $connection->prepare($sql);
+
+        $stmt->bindValue(':pincode', $pincode);
+        $stmt->bindValue(':id', $id);
+        $result = $stmt->execute();
+
+
+        return new JsonResponse($result, 200);
 
 
 

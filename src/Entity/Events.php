@@ -190,6 +190,12 @@ class Events
      */
     private $GP_OrgSeatCount;
 
+
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Tickets", mappedBy="events")
+     */
+    private $tickets;
+
     /**
      * @return mixed
      */
