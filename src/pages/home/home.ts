@@ -1,7 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { NavController } from 'ionic-angular';
-// import { TabsPage } from '../tabs/tabs';
 import { MagicLinkPage } from '../magic-link/magic-link';
+import { LoginPasswordPage } from '../login-password/login-password';
 import { App, ViewController, Slides } from 'ionic-angular';
 import { RestProvider } from '../../providers/rest/rest';
 
@@ -37,15 +37,11 @@ export class HomePage {
           email: this.user.email
         });
       } else {
-        console.log(result+'inscrit');
+        this.navCtrl.push(LoginPasswordPage)
       }
     }, (err) => {
       console.log(err);
     });
-
-    // this.push(MarketPage);
-    // let nav = this.appCtrl.getRootNav();
-    // nav.setRoot(TabsPage);
   }
 
 }

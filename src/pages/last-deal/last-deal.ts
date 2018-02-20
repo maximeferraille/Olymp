@@ -1,13 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AlertService } from '../../services/alertService';
-
-/**
- * Generated class for the LastDealPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { RestProvider } from '../../providers/rest/rest';
 
 @IonicPage()
 @Component({
@@ -15,12 +9,40 @@ import { AlertService } from '../../services/alertService';
   templateUrl: 'last-deal.html',
 })
 export class LastDealPage {
+  private items: any;
+  private result: {};
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public service: AlertService) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public service: AlertService, public restProvider: RestProvider) {
+    this.restProvider.getEvents().then((data) => {
+      this.result = data;
+    }, (err) => {
+      console.log(err);
+    });
+    this.initializeItems();
   }
 
-  ionViewDidLoad() {
-    // Do something on first load
+  initializeItems() {
+    this.items = this.result;
+  }
+
+  ionViewDidEnter() {
+    this.restProvider.getEvents().then((data) => {
+      this.items = data;
+    }, (err) => {
+      console.log(err);
+    });
+  }
+
+  getItems(ev: any) {
+    this.initializeItems();
+
+    var val = ev.target.value;
+
+    if (val && val.trim() != '') {
+      this.items = this.items.filter((item) => {
+        return (item.discipline_name.toLowerCase().indexOf(val.toLowerCase()) > -1);
+      })
+    }
   }
 
   ionViewWillEnter() {

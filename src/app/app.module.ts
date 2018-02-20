@@ -16,6 +16,7 @@ import { TicketsPage } from '../pages/tickets/tickets';
 import { ProfilPage } from '../pages/profil/profil';
 import { MagicLinkPage } from '../pages/magic-link/magic-link';
 import { GeneratePasswordPage } from '../pages/generate-password/generate-password';
+import { LoginPasswordPage } from '../pages/login-password/login-password';
 import { RestProvider } from '../providers/rest/rest';
 
 
@@ -30,7 +31,8 @@ import { RestProvider } from '../providers/rest/rest';
     ScannerPage,
     TicketsPage,
     ProfilPage,
-    GeneratePasswordPage
+    GeneratePasswordPage,
+    LoginPasswordPage
   ],
   imports: [
     BrowserModule,
@@ -48,7 +50,8 @@ import { RestProvider } from '../providers/rest/rest';
     ScannerPage,
     TicketsPage,
     ProfilPage,
-    GeneratePasswordPage
+    GeneratePasswordPage,
+    LoginPasswordPage
   ],
   providers: [
     Deeplinks,

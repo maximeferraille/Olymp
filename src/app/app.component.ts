@@ -7,12 +7,14 @@ import { Deeplinks } from '@ionic-native/deeplinks';
 import { HomePage } from '../pages/home/home';
 import { GeneratePasswordPage } from '../pages/generate-password/generate-password';
 import { AlertService } from '../services/alertService';
+import { DateService } from '../services/dateService';
 
 @Component({
   templateUrl: 'app.html',
   providers: [[AlertService]]
 })
-export class MyApp { 
+export class MyApp {
+  // rootPage:any = GeneratePasswordPage;
   rootPage:any = HomePage;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, private deeplinks: Deeplinks) {
