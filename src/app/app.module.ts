@@ -5,6 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { HttpClientModule } from '@angular/common/http';
 import { Deeplinks } from '@ionic-native/deeplinks';
+import { ScreenOrientation } from '@ionic-native/screen-orientation';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -57,6 +58,7 @@ import { RestProvider } from '../providers/rest/rest';
     Deeplinks,
     StatusBar,
     SplashScreen,
+    ScreenOrientation,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     RestProvider
   ]
