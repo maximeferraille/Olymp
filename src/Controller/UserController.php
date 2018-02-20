@@ -123,4 +123,28 @@ class UserController extends Controller
 
     }
 
+
+    /**
+     * @Route("/user/getuserid/{token}", name="get_user_id")
+     */
+    public function getUserId(Connection $connection, Request $request, $token)
+    {
+
+
+        header("Access-Control-Allow-Origin: *");
+
+
+        $sql = "SELECT id
+                FROM user
+                WHERE token_auth = :token";
+
+
+        $result = $connection->fetchAll("SELECT id  FROM user WHERE token_auth = '".$token."'");
+
+
+
+
+        return new JsonResponse($result[0], 200);
+    }
+
 }
