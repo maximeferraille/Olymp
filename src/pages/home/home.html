@@ -22,10 +22,14 @@
 
     <ion-slide class="home-slide">
       <img class="home-slide--img3" src="assets/imgs/slide3.png" alt="">
-      <form (ngSubmit)="checkMail()">
+      <form [formGroup]="mailForm" (ngSubmit)="checkMail()">
         <div class="home-slide--form">
-          <ion-input type="email" placeholder="Email" [(ngModel)]="user.email" name="email" required></ion-input>
-          <button type="submit">Continue</button>
+          <div class="no-line error" *ngIf="!mailForm.controls.email.valid  && (mailForm.controls.email.dirty) && !mailForm.controls.email.pending">
+            <p *ngIf="mailForm.value.email != ''">Email not valid</p>
+            <p *ngIf="mailForm.value.email == ''">Email required</p>
+          </div>
+          <ion-input formControlName="email" type="email" placeholder="Email" [(ngModel)]="user.email" name="email" required></ion-input>
+          <button ion-button [disabled]="!mailForm.valid" type="submit">Continue</button>
         </div>
       </form>
       <h2 style="margin-top: 76px;" class="home-slide--title">Easy<br>connection</h2>
