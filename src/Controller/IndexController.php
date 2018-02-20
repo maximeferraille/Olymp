@@ -32,20 +32,17 @@ class IndexController extends Controller {
 
 
 
-        $message = (new \Swift_Message('Hello Email'))
-            ->setFrom('test@olymp.com')
-            ->setTo('jbagostin@gmail.com')
-            ->setBody(
-                $this->renderView(
-                // templates/emails/registration.html.twig
-                    'base.html.twig'
-                ),
-                'text/html'
-            )
 
-        ;
+        $to      = 'Jbagostin@gmail.com';
+        $subject = 'le sujet';
+        $message = 'Bonjour !';
+        $headers = 'From: jb@achatcentrale.fr' . "\r\n" .
+            'Reply-To: jb@achatcentrale.fr' . "\r\n" .
+            'X-Mailer: PHP/' . phpversion();
 
-        $mailer->send($message);
+        mail($to, $subject, $message, $headers);
+
+
 
         return new Response($twig->render('base.html.twig'));
     }
