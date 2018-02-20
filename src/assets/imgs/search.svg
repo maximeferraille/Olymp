@@ -1,0 +1,22 @@
+<svg width="21" height="21" viewBox="0 0 21 21" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<title>Group 15.12</title>
+<desc>Created using Figma</desc>
+<g id="Canvas" transform="translate(-2062 -6332)">
+<g id="Group 15.12">
+<g id="ic_search">
+<g id="ic_search">
+<g id="Oval 4">
+<use xlink:href="#path0_stroke" transform="translate(2064 6334)" fill="#879DAF"/>
+</g>
+<g id="Path 8">
+<use xlink:href="#path1_stroke" transform="translate(2076.9 6346.99)" fill="#879DAF"/>
+</g>
+</g>
+</g>
+</g>
+</g>
+<defs>
+<path id="path0_stroke" d="M 7.28571 16.0714C 12.1379 16.0714 16.0714 12.1379 16.0714 7.28571L 13.0714 7.28571C 13.0714 10.4811 10.4811 13.0714 7.28571 13.0714L 7.28571 16.0714ZM 16.0714 7.28571C 16.0714 2.4335 12.1379 -1.5 7.28571 -1.5L 7.28571 1.5C 10.4811 1.5 13.0714 4.09035 13.0714 7.28571L 16.0714 7.28571ZM 7.28571 -1.5C 2.4335 -1.5 -1.5 2.4335 -1.5 7.28571L 1.5 7.28571C 1.5 4.09035 4.09035 1.5 7.28571 1.5L 7.28571 -1.5ZM -1.5 7.28571C -1.5 12.1379 2.4335 16.0714 7.28571 16.0714L 7.28571 13.0714C 4.09035 13.0714 1.5 10.4811 1.5 7.28571L -1.5 7.28571Z"/>
+<path id="path1_stroke" d="M -1.06066 1.06066L 3.46093 5.58225L 5.58225 3.46093L 1.06066 -1.06066L -1.06066 1.06066Z"/>
+</defs>
+</svg>

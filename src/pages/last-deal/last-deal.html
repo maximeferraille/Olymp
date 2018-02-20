@@ -7,20 +7,29 @@
 <ion-header>
 
   <ion-navbar>
+    <img class="nav-logo" start width="30" height="30" src="assets/imgs/logo-small.png"/>
     <ion-title>LastDeal</ion-title>
+    <button class="nav-button" width="30" height="30" (click)="showAlerts()">
+        <ion-icon name="Bell"></ion-icon>
+    </button>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
+<ion-content padding class="app-container">
   <ion-grid>
     <ion-row>
-      <ion-col>
-          <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
+      <p class="search-label">Search by event or location</p>
+    </ion-row>
+    <ion-row>
+      <ion-col col-10>
+          <ion-searchbar placeholder="Search by event or location" class="app-searchbar" (ionInput)="getItems($event)"></ion-searchbar>
       </ion-col>
       <ion-col>
-        <div>2 of 2</div>
+        <button class="app-geoloc" (click)="showAlerts()">
+          <ion-icon name="Geolocalisation"></ion-icon>
+        </button>
       </ion-col>
     </ion-row>
   </ion-grid>

@@ -16,6 +16,20 @@
 // automatically applied to the <body> element in the app.
 @import "../theme/icons";
 
+.nav-logo {
+    margin-left: 15px;
+}
+
+.nav-button {
+    background-color: transparent;
+    float: right;
+    padding: 0;
+    margin-right: 15px;
+    .icon::before {
+        font-size: 30px;
+    }
+}
+
 .app-information-popup {
     position: fixed;
     bottom:10%;
@@ -33,6 +47,75 @@
             font-size: 20px;
         }
     }
+}
+.app-container {
+    background-color: #F7FAFF;
+}
+
+.app-searchbar {
+    background: none;
+    padding-left: 0; 
+    .searchbar-input-container {
+        background: #FFFFFF;
+        box-shadow: 0px 2px 7px #E8E8E8;
+        border-radius: 5px;
+        height: 49px;
+
+        .searchbar-input {
+            padding: 6px 35Px;
+            top: 50%;
+            position: relative;
+            transform: translateY(-50%);
+            font-family: Helvetica Neue;
+            line-height: normal;
+            font-size: 14px;
+            background: none;
+            border: none;
+            box-shadow: none;
+            -webkit-box-shadow: none;
+            font-weight: bold;
+            color: rgba(166, 177, 198, 0.4);
+        }
+        .searchbar-search-icon {
+            left: initial;
+            top: 50%;
+            transform: translateY(-50%); 
+            right: 9px;
+            z-index: 999999;
+        }
+
+        .searchbar-clear-icon {
+            right: initial;
+            left: 9px;
+        }
+    }
+}
+
+.search-label {
+    left: 15px;
+
+    font-family: Helvetica Neue;
+    line-height: normal;
+    font-size: 14px;
+    font-weight: bold;
+    color: #A6B1C6;
+}
+
+.app-geoloc {
+    color: #879DAF;
+    transition: none;
+    width: 50px;
+    height: 49px;
+    top: 50%;
+    transform: translateY(-50%);
+    position: relative;
+    background: #FFFFFF;
+    box-shadow: 0px 2px 7px #E8E8E8;
+    border-radius: 5px;
+}
+
+.searchbar-search-icon {
+    background-image: url("../assets/imgs/search.svg")!important;
 }
 
 .hidden{

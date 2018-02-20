@@ -46,6 +46,10 @@ export class LastDealPage {
     }
   }
 
+  showAlerts() {
+    
+  }
+
   showInformation() {
     var textInformtionPopup = '<p>Last Deal allow you to buy the tickets sold at the last minute. When a sale is open, it is indicated by an arrow.</br>When it is closed by a bell. Click on the bell to receive alerts on this sale</p>';
     if (this.informationPopup != "1") {
