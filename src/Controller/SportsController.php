@@ -2,12 +2,14 @@
 
 namespace App\Controller;
 
-
 use App\Entity\Sports;
 use Doctrine\DBAL\Connection;
+
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Flex\Response;
+use Twig\Environment;
 
 class SportsController extends Controller
 {
@@ -45,3 +47,12 @@ class SportsController extends Controller
 
     }
 }
+
+/**
+ * @Route("/sports/list", name="sports_list")
+
+public function listSports(Environment $twig)
+{
+    return new Response($twig->render('sports/list_sports.twig'));
+
+}*/
