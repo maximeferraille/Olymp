@@ -16,6 +16,29 @@
 // automatically applied to the <body> element in the app.
 @import "../theme/icons";
 
+.app-information-popup {
+    position: fixed;
+    bottom:10%;
+    right: 22Px;
+    width: 59px;
+    height: 38px;
+    background: #FFFFFF;
+    box-shadow: 0px 4px 11px #D0D9DB;
+    border-radius: 23.5px;
+    ion-icon {
+        color: #879DAF;
+        background: none;
+
+        &::before {
+            font-size: 20px;
+        }
+    }
+}
+
+.hidden{
+    display: none;
+}
+
 h1 {
     line-height: 35px;
     font-size: 25px;
@@ -105,6 +128,7 @@ ion-title {
         min-width: 95%;
         .alert-message {
             padding: 0 24px !important;
+            color: #243B6B;
         }
     }
 

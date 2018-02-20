@@ -11,6 +11,7 @@ import { RestProvider } from '../../providers/rest/rest';
 export class LastDealPage {
   private items: any;
   private result: {};
+  informationPopup = window.localStorage.getItem('informationPopup');
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public service: AlertService, public restProvider: RestProvider) {
     this.restProvider.getEvents().then((data) => {
@@ -45,10 +46,9 @@ export class LastDealPage {
     }
   }
 
-  ionViewWillEnter() {
-    var informationPopup = window.localStorage.getItem('informationPopup');
+  showInformation() {
     var textInformtionPopup = '<p>Last Deal allow you to buy the tickets sold at the last minute. When a sale is open, it is indicated by an arrow.</br>When it is closed by a bell. Click on the bell to receive alerts on this sale</p>';
-    if (informationPopup != "1") {
+    if (this.informationPopup != "1") {
       this.service.informationAlert(textInformtionPopup);
     }
     // else {
