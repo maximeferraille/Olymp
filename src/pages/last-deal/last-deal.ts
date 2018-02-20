@@ -41,13 +41,13 @@ export class LastDealPage {
 
     if (val && val.trim() != '') {
       this.items = this.items.filter((item) => {
-        return (item.discipline_name.toLowerCase().indexOf(val.toLowerCase()) > -1);
+        return (item.discipline_name.toLowerCase().indexOf(val.toLowerCase()) > -1 || item.cluster_name.toLowerCase().indexOf(val.toLowerCase()) > -1);
       })
     }
   }
 
   showAlerts() {
-    
+
   }
 
   showInformation() {

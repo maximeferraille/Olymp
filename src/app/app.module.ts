@@ -6,6 +6,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { HttpClientModule } from '@angular/common/http';
 import { Deeplinks } from '@ionic-native/deeplinks';
 import { ScreenOrientation } from '@ionic-native/screen-orientation';
+import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -59,6 +60,7 @@ import { RestProvider } from '../providers/rest/rest';
     StatusBar,
     SplashScreen,
     ScreenOrientation,
+    QRScanner,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     RestProvider
   ]
