@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "384867572610",
+    "firebase_url": "https://olymp-31575.firebaseio.com",
+    "project_id": "olymp-31575",
+    "storage_bucket": "olymp-31575.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:384867572610:android:764d2cb7da3280eb",
+        "android_client_info": {
+          "package_name": "io.ionic.starter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "384867572610-rasb8eumi9pk2tp4bint8nj0v1dppbho.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "384867572610-4a7r5eeioach6n47nk6uue79tjci974t.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyARHzowNNxjlRR9vXra8mz5pF-ImBZQGLE"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
