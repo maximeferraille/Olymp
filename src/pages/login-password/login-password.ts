@@ -15,13 +15,33 @@ import { TabsPage } from '../tabs/tabs';
   templateUrl: 'login-password.html',
 })
 export class LoginPasswordPage {
+  passcode = "";
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public appCtrl: App) {
   }
 
   ionViewDidLoad() {
-    let nav = this.appCtrl.getRootNav();
-    nav.setRoot(TabsPage);
+
+  }
+
+  init() {
+    this.passcode = "";
+  }
+
+  add(value) {
+    if(this.passcode.length < 4) {
+      this.passcode = this.passcode + value;
+      if(this.passcode.length == 4) {
+        let nav = this.appCtrl.getRootNav();
+        nav.setRoot(TabsPage);
+      }
+    }
+  }
+
+  delete() {
+    if(this.passcode.length > 0) {
+      this.passcode = this.passcode.substring(0, this.passcode.length - 1);
+    }
   }
 
 }

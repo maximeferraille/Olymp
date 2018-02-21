@@ -12,7 +12,7 @@ import { DateService } from '../services/dateService';
 
 @Component({
   templateUrl: 'app.html',
-  providers: [[AlertService]]
+  providers: [[AlertService, DateService]]
 })
 export class MyApp {
   // rootPage:any = GeneratePasswordPage;

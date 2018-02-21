@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AlertService } from '../../services/alertService';
 import { RestProvider } from '../../providers/rest/rest';
+import { DateService } from '../../services/dateService';
 
 @IonicPage()
 @Component({
@@ -13,7 +14,7 @@ export class LastDealPage {
   private result: {};
   informationPopup = window.localStorage.getItem('informationPopup');
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public service: AlertService, public restProvider: RestProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public service: AlertService, public restProvider: RestProvider, public dateService: DateService) {
     this.restProvider.getEvents().then((data) => {
       this.result = data;
     }, (err) => {
