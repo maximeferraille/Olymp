@@ -10,3 +10,21 @@
     Thanks!
 
 {% endblock %}
+
+
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Code</th>
+    </tr>
+    </thead>
+    <tbody>
+    {{ for sport in sports }}
+        <tr>{{ sport.name }}</tr>
+        <tr>{{ sport.code }}</tr>
+    {{ endfor }}
+
+    </tbody>
+
+</table>
