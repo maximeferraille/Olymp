@@ -16,19 +16,19 @@ class ScanController extends Controller
 
         header("Access-Control-Allow-Origin: *");
 
-
-        $scan = $connection->fetchAll('SELECT * FROM tickets');
+        $id_ticket = $_GET['id_ticket'];
+        $scan = $connection->fetchAll('SELECT * FROM tickets where id_ticket=?", $id_ticket');
 
 
         if (!$scan) {
             throw $this->createNotFoundException(
-                'Aucun sports'
+                'Ticket Invalide'
             );
         }
 
         else {
 
-        return new JsonResponse($scan, 200);
+        //return new JsonResponse($scan, 200);
         return new Response($twig->render('scan/index.html.twig'));
         }
 
