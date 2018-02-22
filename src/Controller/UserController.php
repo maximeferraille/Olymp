@@ -176,9 +176,9 @@ class UserController extends Controller
 
         header("Access-Control-Allow-Origin: *");
 
-        $mail = $request->query->get('mail');
-        $pincode = $request->query->get('pincode');
-        $token_auth = $request->query->get('token_auth');
+        $mail = $request->request->get('mail');
+        $pincode = $request->request->get('pincode');
+        $token_auth = $request->requestga->get('token_auth');
 
 
 
