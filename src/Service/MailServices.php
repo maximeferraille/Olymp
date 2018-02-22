@@ -37,7 +37,7 @@ class MailServices{
     }
 
 
-    public function mailConfirmUser($to)
+    public function mailConfirmUser($to, $token)
     {
         $message = (new \Swift_Message());
         $message->setFrom('contact@valentinchevreau.fr');
@@ -50,7 +50,9 @@ class MailServices{
         $message->setBody(
             $this->twig->render(
             // templates/emails/registration.html.twig
-                'emails/registration.html.twig'),
+                'emails/registration.html.twig', [
+                    "token" => $token
+            ]),
             'text/html');
 
         return $this->mailer->send($message);
