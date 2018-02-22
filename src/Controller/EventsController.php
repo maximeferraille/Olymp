@@ -47,7 +47,7 @@ class EventsController extends Controller
                 FROM events
                 LEFT OUTER JOIN tickets ON events.id = tickets.event_id
                 WHERE event_id = ".$id."
-                AND tickets.status = 'M'";
+                AND tickets.status = 'B'";
 
 
 
