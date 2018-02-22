@@ -26,6 +26,21 @@ class UserController extends Controller
         return $this->render('@Maker/demoPage.html.twig', [ 'path' => str_replace($this->getParameter('kernel.project_dir').'/', '', __FILE__) ]);
     }
 
+    private function RandomToken($length = 32){
+        if(!isset($length) || intval($length) <= 8 ){
+            $length = 32;
+        }
+        if (function_exists('random_bytes')) {
+            return bin2hex(random_bytes($length));
+        }
+        if (function_exists('mcrypt_create_iv')) {
+            return bin2hex(mcrypt_create_iv($length, MCRYPT_DEV_URANDOM));
+        }
+        if (function_exists('openssl_random_pseudo_bytes')) {
+            return bin2hex(openssl_random_pseudo_bytes($length));
+        }
+    }
+
     /**
      * @Route("/user/new", name="user_new")
      */
@@ -37,22 +52,8 @@ class UserController extends Controller
         $ip = $_SERVER['REMOTE_ADDR'];
 
 
-        function RandomToken($length = 32){
-            if(!isset($length) || intval($length) <= 8 ){
-                $length = 32;
-            }
-            if (function_exists('random_bytes')) {
-                return bin2hex(random_bytes($length));
-            }
-            if (function_exists('mcrypt_create_iv')) {
-                return bin2hex(mcrypt_create_iv($length, MCRYPT_DEV_URANDOM));
-            }
-            if (function_exists('openssl_random_pseudo_bytes')) {
-                return bin2hex(openssl_random_pseudo_bytes($length));
-            }
-        }
 
-        $token = RandomToken(10);
+        $token = $this->RandomToken(10);
 
         $user = $this->getDoctrine()
             ->getRepository(User::class)
@@ -97,7 +98,6 @@ class UserController extends Controller
 
     }
 
-
     /**
      * @Route("/user/pincode", name="set_pincode")
      * @Method("POST")
@@ -129,7 +129,6 @@ class UserController extends Controller
 
     }
 
-
     /**
      * @Route("/user/getuserid/{token}", name="get_user_id")
      */
@@ -151,8 +150,6 @@ class UserController extends Controller
         return new JsonResponse($result[0], 200);
     }
 
-
-
     /**
      * @Route("/user/confirm/{token}", name="confirm_token")
      */
@@ -166,6 +163,47 @@ class UserController extends Controller
                 'token' => $token
             ]), 200);
 
+
+    }
+
+
+    /**
+     * @Route("/user/connect/{mail}/{pincode}/{token_auth}", name="connect")
+     * @Method("post")
+     */
+    public function connect(Connection $connection, $mail, $pincode, $token_auth)
+    {
+
+        header("Access-Control-Allow-Origin: *");
+
+        $result = $connection->fetchAll("SELECT *  FROM user WHERE mail = '".$mail."'");
+
+
+        if (isset($pincode) && $pincode == $result[0]["pincode"] && $token_auth == $result[0]["token_auth"]){
+
+
+            $token = $this->RandomToken(10);
+
+            $sql = "UPDATE user
+                SET token_auth = '".$token."'
+                WHERE id = :id";
+
+            $stmt = $connection->prepare($sql);
+
+            $stmt->bindValue(':id', $result[0]["id"]);
+            $stmt->execute();
+
+            $data = [
+                "id" => $result[0]["id"],
+                "token" => $token
+            ];
+
+
+            return new JsonResponse($data, 200);
+        }
+
+
+        return new JsonResponse($result, 200);
 
     }
 }
