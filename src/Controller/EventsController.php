@@ -34,7 +34,32 @@ class EventsController extends Controller
     }
 
 
+    /**
+     * @Route("/tickets/events/{id}", name="ticket_events")
+     */
+    public function ticketsByevents(Connection $connection, $id)
+    {
 
+
+        $sql = "SELECT *
+                FROM events
+                LEFT OUTER JOIN tickets ON events.id = tickets.event_id
+                WHERE event_id = ".$id."
+                AND tickets.status = 'M'";
+
+
+
+        $events = $connection->fetchAll($sql);
+
+
+        if (!$events) {
+            throw $this->createNotFoundException(
+                'Aucun evenements'
+            );
+        }
+
+        return new JsonResponse($events, 200);
+    }
 
 
 }
