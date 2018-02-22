@@ -19,7 +19,7 @@ class IndexController extends Controller {
         $mail = $mailerService;
 
 
-        if ($mail->mailTest($mail)) {
+        if ($mail->mailConfirmUser("Jbagostin@gmail.com")) {
             dump('ok');
         }
 
