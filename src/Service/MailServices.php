@@ -41,7 +41,7 @@ class MailServices{
     {
         $message = (new \Swift_Message());
         $message->setFrom('contact@valentinchevreau.fr');
-        $message->setTo('jbagostin@gmail.com');
+        $message->setTo($to);
         $message->setPriority(1);
         $message->setCharset("utf-8");
         $message->setSubject("Message super important");
