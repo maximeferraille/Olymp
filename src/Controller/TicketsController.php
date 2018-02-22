@@ -50,7 +50,6 @@ class TicketsController extends Controller
 
     }
 
-
     /**
      * @Route("/tickets/new", name="tickets_new_id")
      * @Method("POST")
@@ -82,6 +81,28 @@ class TicketsController extends Controller
 
 
         return $this->redirectToRoute('tickets');
+    }
+
+    /**
+     * @Route("/tickets/scan/{id}", name="ticket_scan")
+     */
+    public function getTicketsByscan(Connection $connection, $id)
+    {
+
+
+
+        $sql = "SELECT *  FROM tickets
+                INNER JOIN events ON tickets.event_id = events.id
+                WHERE tickets.id = :id  ";
+
+        $stmt = $connection->prepare($sql);
+
+        $stmt->bindValue(':id', $id);
+        $stmt->execute();
+
+        $result = $stmt->fetchAll();
+        return new JsonResponse($result[0], 200);
+        
     }
 
 }
