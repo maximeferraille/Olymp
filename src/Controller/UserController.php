@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\User;
+use App\Service\MailServices;
 use Doctrine\DBAL\Connection;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -11,6 +12,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Doctrine\DBAL\Types\IntegerType;
+use Twig\Environment;
 
 
 class UserController extends Controller
@@ -27,7 +29,7 @@ class UserController extends Controller
     /**
      * @Route("/user/new", name="user_new")
      */
-    public function newUser(Request $request)
+    public function newUser(Request $request, MailServices $mailServices)
     {
         header("Access-Control-Allow-Origin: *");
 
@@ -60,7 +62,6 @@ class UserController extends Controller
 
 
 
-
         if (!$user) {
 
             $em = $this->getDoctrine()->getManager();
@@ -74,6 +75,12 @@ class UserController extends Controller
             $em->flush();
 
 
+            $mailer = $mailServices;
+
+
+            if ($mailer->mailConfirmUser($mail)) {
+                dump('ok');
+            }
 
 
             $result = false;
@@ -144,4 +151,21 @@ class UserController extends Controller
         return new JsonResponse($result[0], 200);
     }
 
+
+
+    /**
+     * @Route("/user/confirm/{token}", name="confirm_token")
+     */
+    public function confirmUser(Environment $twig, $token)
+    {
+
+
+
+
+        return new Response($twig->render('emails/registration.html.twig',[
+                'token' => $token
+            ]), 200);
+
+
+    }
 }
