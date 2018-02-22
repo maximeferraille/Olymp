@@ -84,9 +84,9 @@ class TicketsController extends Controller
     }
 
     /**
-     * @Route("/tickets/scan/{id}", name="ticket_scan")
+     * @Route("/ticket/{id}", name="ticket")
      */
-    public function getTicketsByscan(Connection $connection, $id)
+    public function getTicket(Connection $connection, $id)
     {
 
 
