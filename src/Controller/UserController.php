@@ -168,13 +168,20 @@ class UserController extends Controller
 
 
     /**
-     * @Route("/user/connect/{mail}/{pincode}/{token_auth}", name="connect")
+     * @Route("/user/connect", name="connect")
      * @Method("post")
      */
-    public function connect(Connection $connection, $mail, $pincode, $token_auth)
+    public function connect(Connection $connection, Request $request)
     {
 
         header("Access-Control-Allow-Origin: *");
+
+        $mail = $request->query->get('mail');
+        $pincode = $request->query->get('pincode');
+        $token_auth = $request->query->get('token_auth');
+
+
+
 
         $result = $connection->fetchAll("SELECT *  FROM user WHERE mail = '".$mail."'");
 
