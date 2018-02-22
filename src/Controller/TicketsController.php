@@ -112,4 +112,27 @@ class TicketsController extends Controller
         
     }
 
+    /**
+     * @Route("/ticket/buyable/{id}", name="tickets_buyable")
+     */
+    public function buyableTickets(Connection $connection, $id)
+    {
+
+        header("Access-Control-Allow-Origin: *");
+
+        $sql = "UPDATE tickets
+                SET status = 'B'
+                WHERE id = :id";
+
+        $stmt = $connection->prepare($sql);
+
+        $stmt->bindValue(':id', $id);
+        $stmt->execute();
+
+
+        return new JsonResponse(true, 200);
+
+
+    }
+
 }

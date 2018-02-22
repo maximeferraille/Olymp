@@ -40,6 +40,8 @@ class EventsController extends Controller
     public function ticketsByevents(Connection $connection, $id)
     {
 
+        header("Access-Control-Allow-Origin: *");
+
 
         $sql = "SELECT *
                 FROM events
