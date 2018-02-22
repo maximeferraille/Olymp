@@ -78,7 +78,7 @@ class UserController extends Controller
             $mailer = $mailServices;
 
 
-            if ($mailer->mailConfirmUser($mail)) {
+            if ($mailer->mailConfirmUser($mail, $token)) {
                 dump('ok');
             }
 
