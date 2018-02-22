@@ -16,6 +16,10 @@
 // automatically applied to the <body> element in the app.
 @import "../theme/icons";
 
+ion-app.cameraView, ion-app.cameraView ion-content, ion-app.cameraView .nav-decor {
+    background: transparent none !important;
+}
+
 .nav-logo {
     margin-left: 15px;
 }

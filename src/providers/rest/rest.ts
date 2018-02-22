@@ -10,13 +10,22 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class RestProvider {
   apiUrl = 'http://api.valentinchevreau.fr';
-  constructor(public http: HttpClient) {
-    console.log('Hello RestProvider Provider');
-  }
+  constructor(public http: HttpClient) {}
 
   newUser(data) {
     return new Promise((resolve, reject) => {
-      this.http.get(this.apiUrl+'/user/new?mail='+JSON.stringify(data))
+      this.http.get(this.apiUrl+'/user/new?mail='+data.email)
+        .subscribe(res => {
+          resolve(res);
+        }, (err) => {
+          reject(err);
+        });
+    });
+  }
+
+  getTicket(data) {
+    return new Promise((resolve, reject) => {
+      this.http.get(this.apiUrl+'/ticket/'+data)
         .subscribe(res => {
           resolve(res);
         }, (err) => {

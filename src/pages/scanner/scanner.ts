@@ -1,13 +1,10 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, App } from 'ionic-angular';
 import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner';
-
-/**
- * Generated class for the ScannerPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { TabsPage } from '../tabs/tabs';
+import { RestProvider } from '../../providers/rest/rest';
+import { ScannerOkPage } from '../scanner-ok/scanner-ok';
+import { ScannerWrongPage } from '../scanner-wrong/scanner-wrong';
 
 @IonicPage()
 @Component({
@@ -16,38 +13,72 @@ import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner';
 })
 export class ScannerPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private qrScanner: QRScanner) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private qrScanner: QRScanner, public appCtrl: App, public restProvider:  RestProvider) {
   }
 
-  ionViewDidLoad() {
+  ionViewDidEnter() {
+    var ticket:any;
+    this.restProvider.getTicket("78").then((result) => {
+      ticket = result;
+      console.log(ticket);
+      this.navCtrl.push(ScannerOkPage, {
+        ticket: ticket
+      });
+    }, (err) => {
+      console.log(err);
+      this.navCtrl.push(ScannerWrongPage, {
+        err: err
+      });
+    });
     // Optionally request the permission early
+    // this.qrScanner.prepare()
+    //   .then((status: QRScannerStatus) => {
+    //     if (status.authorized) {
+    //       this.qrScanner.show();
+    //       (window.document.querySelector('ion-app') as HTMLElement).classList.add('cameraView');
+
+    //       let scanSub = this.qrScanner.scan().subscribe((text: string) => {
+    //         var ticket:any;
+    //         this.restProvider.getTicket(text).then((result) => {
+    //           ticket = result;
+    //           this.navCtrl.push(ScannerOkPage, {
+    //             ticket: ticket
+    //           });
+    //         }, (err) => {
+    //           this.navCtrl.push(ScannerWrongPage, {
+    //             err: err
+    //           });
+    //         });
+    //         this.qrScanner.hide();
+    //         (window.document.querySelector('ion-app') as HTMLElement).classList.remove('cameraView');
+    //         scanSub.unsubscribe();
+    //       });
+    //     } else if (status.denied) {
+    //       let nav = this.appCtrl.getRootNav();
+    //       nav.setRoot(TabsPage);
+    //     } else {
+    //       // permission was denied, but not permanently. You can ask for permission again at a later time.
+    //     }
+    //   })
+    // .catch((e: any) => console.log('Error is', e));
+  }
+
+  ionViewWillLeave(){
     this.qrScanner.prepare()
-      .then((status: QRScannerStatus) => {
-        if (status.authorized) {
-          // camera permission was granted
-
-
-          // start scanning
-          let scanSub = this.qrScanner.scan().subscribe((text: string) => {
-            console.log('Scanned something', text);
-
-            this.qrScanner.hide(); // hide camera preview
-            scanSub.unsubscribe(); // stop scanning
-          });
-
-          // show camera preview
-          this.qrScanner.show();
-
-          // wait for user to scan something, then the observable callback will be called
-
-        } else if (status.denied) {
-          // camera permission was permanently denied
-          // you must use QRScanner.openSettings() method to guide the user to the settings page
-          // then they can grant the permission from there
-        } else {
-          // permission was denied, but not permanently. You can ask for permission again at a later time.
-        }
-      })
+    .then((status: QRScannerStatus) => {
+      if (status.authorized) {
+        this.qrScanner.hide();
+        (window.document.querySelector('ion-app') as HTMLElement).classList.remove('cameraView');
+      }
+    })
     .catch((e: any) => console.log('Error is', e));
+  }
+
+  toggleFlashlight(){
+    if (this.qrScanner.enableLight()) {
+      this.qrScanner.disableLight()
+    } else {
+      this.qrScanner.enableLight()
+    }
   }
 }

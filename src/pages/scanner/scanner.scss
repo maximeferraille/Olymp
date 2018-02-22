@@ -1,3 +1,32 @@
 page-scanner {
+    .content-md {
+        background: transparent !important;
+    }
 
+    .flash-button {
+        position: absolute;
+        width: 56px;
+        height: 56px;
+        left: 14px;
+        top: 17px;
+
+        background: #243B6B;
+        border: #243B6B solid 1px;
+        border-radius: 50px;
+    }
+
+    .scan-box {
+        width: 50%;
+        border: solid 2px rgb(255, 255, 255);
+        border-radius: 25px;
+        left: 50%;
+        top: 50%;
+        position: relative;
+        transform: translate(-50%, -50%);
+        &::after {
+        content: "";
+        display: block;
+        padding-bottom: 100%;
+        }
+    }
 }

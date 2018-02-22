@@ -13,6 +13,8 @@ import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 import { LastDealPage } from '../pages/last-deal/last-deal';
 import { MarketPage } from '../pages/market/market';
+import { ScannerOkPage } from '../pages/scanner-ok/scanner-ok';
+import { ScannerWrongPage } from '../pages/scanner-wrong/scanner-wrong';
 import { ScannerPage } from '../pages/scanner/scanner';
 import { TicketsPage } from '../pages/tickets/tickets';
 import { ProfilPage } from '../pages/profil/profil';
@@ -34,7 +36,9 @@ import { RestProvider } from '../providers/rest/rest';
     TicketsPage,
     ProfilPage,
     GeneratePasswordPage,
-    LoginPasswordPage
+    LoginPasswordPage,
+    ScannerOkPage,
+    ScannerWrongPage,
   ],
   imports: [
     BrowserModule,
@@ -53,7 +57,9 @@ import { RestProvider } from '../providers/rest/rest';
     TicketsPage,
     ProfilPage,
     GeneratePasswordPage,
-    LoginPasswordPage
+    LoginPasswordPage,
+    ScannerOkPage,
+    ScannerWrongPage,
   ],
   providers: [
     Deeplinks,

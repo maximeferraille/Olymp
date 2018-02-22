@@ -45,16 +45,16 @@ export class HomePage {
 
   checkMail() {
     this.restProvider.newUser(this.user).then((result) => {
-      console.log(result);
-      if (result != true) {
-        this.navCtrl.push(MagicLinkPage, {
-          email: this.user.email
-        });
-      } else {
+      console.log('isok');
+      if (result == true) {
         this.navCtrl.push(LoginPasswordPage)
       }
     }, (err) => {
       console.log(err);
+    });
+
+    this.navCtrl.push(MagicLinkPage, {
+      email: this.user.email
     });
   }
 
