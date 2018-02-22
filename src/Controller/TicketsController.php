@@ -113,7 +113,7 @@ class TicketsController extends Controller
     }
 
     /**
-     * @Route("/ticket/buyable/{id}", name="tickets_buyable")
+     * @Route("/ticket/buyable/{id}", name="ticket_buyable")
      */
     public function buyableTickets(Connection $connection, $id)
     {
@@ -135,4 +135,47 @@ class TicketsController extends Controller
 
     }
 
+
+    /**
+     * @Route("/ticket/buy/{ticket_id}/{user_id}", name="ticket_buy")
+     * @Method("POST")
+     */
+    public function buyTickets(Connection $connection, $ticket_id, $user_id)
+    {
+
+        header("Access-Control-Allow-Origin: *");
+
+        $sql = "UPDATE tickets
+                SET status = 'S', user_id = :user_id
+                WHERE id = :id";
+
+        $stmt = $connection->prepare($sql);
+
+        $stmt->bindValue(':id', $ticket_id);
+        $stmt->bindValue(':user_id', $user_id);
+        $stmt->execute();
+
+
+        return new JsonResponse(true, 200);
+    }
+
+    /**
+     * @Route("/ticket/user/{user_id}", name="ticket_user")
+     * @Method("GET")
+     */
+    public function ticketByUser(Connection $connection, $user_id)
+    {
+
+
+        header("Access-Control-Allow-Origin: *");
+
+
+        $tickets = $connection->fetchAll("SELECT *  FROM tickets INNER JOIN events ON tickets.event_id = events.id WHERE user_id = ". $user_id);
+
+
+
+        return new JsonResponse($tickets, 200);
+
+
+    }
 }
