@@ -1,35 +1,43 @@
 <?php
 namespace App\Service;
 
+use Twig\Environment;
+
 class MailServices{
 
 
     private $mailer;
 
-    public function __construct(\Swift_Mailer $mailer)
+    private $twig;
+
+    public function __construct(\Swift_Mailer $mailer, Environment $twig)
     {
         $this->mailer = $mailer;
+
+        $this->twig = $twig;
     }
 
 
-    public function mailTest(){
+    public function mailTest( $mailTo){
+
 
 
 
 
             $message = (new \Swift_Message());
-            $message->setFrom('jb@valentinchevreau.fr');
+            $message->setFrom('contact@valentinchevreau.fr');
             $message->setTo('jbagostin@gmail.com');
             $message->setPriority(3);
             $message->setCharset("utf-8");
             $message->setSubject("Message super important");
             $message->setReplyTo("contact@valentinchevreau.fr");
-            $message->setContentType('text/plain');
-            $message->addPart(
-                'Someone just updated the site. We told them: '
-            );
+            $message->setContentType('text/html');
+            $message->setBody(
+                $this->twig->render(
+                // templates/emails/registration.html.twig
+                    'emails/registration.html.twig'),
+                'text/html');
 
-
-        return $this->mailer->send($message) > 0;
+        return $this->mailer->send($message);
     }
 }
