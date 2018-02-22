@@ -22,6 +22,7 @@ import { MagicLinkPage } from '../pages/magic-link/magic-link';
 import { GeneratePasswordPage } from '../pages/generate-password/generate-password';
 import { LoginPasswordPage } from '../pages/login-password/login-password';
 import { RestProvider } from '../providers/rest/rest';
+import { NgxQRCodeModule } from 'ngx-qrcode2';
 
 
 @NgModule({
@@ -43,6 +44,7 @@ import { RestProvider } from '../providers/rest/rest';
   imports: [
     BrowserModule,
     HttpClientModule,
+    NgxQRCodeModule,
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],

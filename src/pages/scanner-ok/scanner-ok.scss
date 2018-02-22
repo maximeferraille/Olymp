@@ -1,3 +1,74 @@
 page-scanner-ok {
+    
+    ion-header {
+        &::after {
+            background: none !important;
+            background-color: #FFFFFF;
+        }
+    }
+    ion-navbar.toolbar {
+        background: none;
+        border: none;
 
+        .toolbar-background {
+            background: none !important;
+            border: none !important;
+        }
+
+        ion-icon {
+            color: white !important;
+        }
+    }
+    ion-content {
+        height: 110% !important;
+        background: #65CDBC !important;
+    }
+
+    .ok {
+        text-align: center;
+        position: relative;
+        top: 50%;
+        transform: translateY(-50%);
+        font-family: Helvetica Neue;
+        &--title {
+            margin-top:86px !important;
+            text-align: center;
+            line-height: 35px;
+            font-size: 33px;
+            letter-spacing: 0.00133333em;
+            color: #FFFFFF;
+        }
+        &--icon {
+            margin: auto;
+            margin-top: 50px;
+            margin-bottom: 50px;
+            display: block;
+            width: 41Px;
+        }
+        &--button {
+            display: block;
+            margin: auto;
+            margin-top:150px;
+            width: 270px;
+            height: 50px;
+            background: #EAF1F3;
+            border-radius: 5px; 
+
+            font-family: Helvetica Neue;
+            line-height: normal;
+            font-size: 15px;
+            text-align: center;
+
+            color: #879DAF;
+
+        }
+    }
+
+    .ticket-container {
+        margin-bottom: 50px;
+    }
+
+    .circle-left, .circle-right {
+        background-color: #65CDBC;
+    }
 }

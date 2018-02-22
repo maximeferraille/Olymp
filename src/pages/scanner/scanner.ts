@@ -18,11 +18,13 @@ export class ScannerPage {
 
   ionViewDidEnter() {
     var ticket:any;
-    this.restProvider.getTicket("78").then((result) => {
+    this.restProvider.getTicket("7").then((result) => {
       ticket = result;
+      var text = "7";
       console.log(ticket);
       this.navCtrl.push(ScannerOkPage, {
-        ticket: ticket
+        ticket: ticket,
+        ticket_id: text
       });
     }, (err) => {
       console.log(err);

@@ -228,3 +228,188 @@ ion-title {
         display: none;
     }
 }
+
+// TICKET
+
+.ticket-container {
+    p{
+        margin: 0;
+    }
+
+    .ticket-top, .ticket-middle, .ticket-middle2, .ticket-bottom {
+        padding: 0 23px;
+    }
+
+    .ticket-top {
+        position: relative;
+        padding-bottom: 10px;
+        padding-top: 23px;
+
+        &__left {
+            display: inline-block;
+            width: 55%;
+
+            .ticket-title {
+                line-height: 21px;
+                font-size: 15px;
+                letter-spacing: 0.0277778em;
+
+                color: #1D2027;
+            }
+
+            .ticket-place {
+                line-height: 23px;
+                font-size: 12px;
+                letter-spacing: 0.0416667em;
+
+                color: #919DB5;
+            }
+
+            .ticket-seat {
+                line-height: normal;
+                font-size: 11px;
+
+                color: #919DB5;
+                &__number {
+                    font-style: normal;
+                    font-weight: 500;
+                    line-height: normal;
+                    font-size: 12px;
+
+                    color: #243B6B;
+                }
+            }
+        }
+
+        &__right {
+            width: 35%;
+            float: right;
+            display: inline-block;
+            ion-icon {
+                display: block;
+                width: 14px;
+                height: 25px;
+                margin-left: auto;
+
+                &::before {
+                    font-size: 14px;
+                }
+            }
+            p {
+                text-align: right;
+            }
+        }
+    }
+
+    .ticket-bottom {
+        padding-bottom: 23px;
+        padding-top: 15px;
+        line-height: normal;
+        font-size: 12px;
+        font-weight: bold;
+
+        &--firstCol {
+            color: #9B9DB1;
+        }
+
+        &--secondCol {
+            color: #65CDBC;
+        }
+    }
+    font-family: Helvetica Neue;
+    background: linear-gradient(358.12deg, rgba(255, 255, 255, 0.93) -35.43%, rgba(242, 245, 249, 0.93) 91.89%);
+    box-shadow: 0px 16px 22px rgba(0, 0, 0, 0.275362);
+    border-radius: 15Px;
+
+    .separator {
+        .border {
+            mix-blend-mode: normal;
+            opacity: 0.25;
+            border: 1px solid #5D6683;
+        }
+
+        .circle-left {
+            float: left;
+            z-index: 99999;
+            width: 7px;
+            height: 14px;
+            border-bottom-right-radius: 100px;
+            border-top-right-radius: 100px;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+            position: relative;
+            top: -7px;
+            box-shadow: inset -1px 0px 27px -11px rgba(0, 0, 0, 0.31);
+        }
+
+        .circle-right {
+            float: right;
+            z-index: 99999;
+            width: 7px;
+            height: 14px;
+            border-bottom-left-radius: 100px;
+            border-top-left-radius: 100px;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+            position: relative;
+            top: -7px;
+            box-shadow: inset -1px 0px 27px -11px rgba(0, 0, 0, 0.31);
+        }
+    }
+
+    .ticket-middle{
+        padding: 35px 23px;
+        img {
+            position: relative;
+            left: 50%;
+            transform: translateX(-50%); 
+        }
+    }
+
+    .ticket-middle2 {
+        height: 70px;
+        padding-top: 15px;
+        padding-bottom: 15px;
+        &__left {
+            width: 45%;
+            display: inline-block;
+            vertical-align: middle;
+            .ticket-owner{
+                text-align: left;
+                font-style: normal;
+                font-weight: 500;
+                line-height: normal;
+                font-size: 11px;
+                
+                color: #9B9DB1;
+            }
+            .ticket-userId{
+                text-align: left;
+                font-style: normal;
+                font-weight: 500;
+                line-height: normal;
+                font-size: 14px;
+
+                color: #243B6B;
+            }
+        }
+
+        &__right{
+            width: 40%;
+            display: inline-block;
+            vertical-align: middle;
+            float: right;
+            .ticket-button{
+                padding: 10px;
+                background: #243B6B;
+                border-radius: 10px;
+                color: white;
+                height: 40px;
+                width: 100%;
+                text-align: center;
+            }
+        }
+    }
+}
