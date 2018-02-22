@@ -18,7 +18,7 @@ class MailServices{
 
 
         $message =  $message = (new \Swift_Message('test mail'));
-            $message->setFrom('Jbagostin@gmail.com');
+            $message->setFrom('jb@valentinchevreau.fr');
             $message->setTo('jbagostin@gmail.com');
             $message->addPart(
                 'Someone just updated the site. We told them: '
