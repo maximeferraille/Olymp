@@ -11,13 +11,15 @@ use Twig\Environment;
 class IndexController extends Controller {
 
     /**
-     * @Route("/")
+     * @Route("/{mail}")
      */
-    public function index (Environment $twig,MailServices $mailerService){
+    public function index (Environment $twig,MailServices $mailerService, $mail){
 
 
         $mail = $mailerService;
-        if ($mail->mailTest()) {
+
+
+        if ($mail->mailTest($mail)) {
             dump('ok');
         }
 
