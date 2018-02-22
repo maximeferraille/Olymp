@@ -21,6 +21,7 @@ class TicketsController extends Controller
      */
     public function selectEvent(Connection $connection, Environment $twig)
     {
+        header("Access-Control-Allow-Origin: *");
 
 
         $event = $this->getDoctrine()
@@ -42,6 +43,9 @@ class TicketsController extends Controller
     public function getTickets(Connection $connection)
     {
 
+        header("Access-Control-Allow-Origin: *");
+
+
         $tickets = $connection->fetchAll("SELECT *  FROM tickets INNER JOIN events ON tickets.event_id = events.id");
 
 
@@ -56,6 +60,8 @@ class TicketsController extends Controller
      */
     public function newTickets(Request $request, Connection $connection)
     {
+
+        header("Access-Control-Allow-Origin: *");
 
 
         $eventId = $request->request->get('select_event');
@@ -89,6 +95,7 @@ class TicketsController extends Controller
     public function getTicket(Connection $connection, $id)
     {
 
+        header("Access-Control-Allow-Origin: *");
 
 
         $sql = "SELECT *  FROM tickets
