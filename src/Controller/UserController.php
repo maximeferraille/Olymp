@@ -104,7 +104,6 @@ class UserController extends Controller
         $pincode = $request->request->get('pincode');
         $id = $request->request->get('id');
 
-        dump($id);
 
         $sql = "UPDATE user
                 SET pincode = :pincode
@@ -134,9 +133,7 @@ class UserController extends Controller
         header("Access-Control-Allow-Origin: *");
 
 
-        $sql = "SELECT id
-                FROM user
-                WHERE token_auth = :token";
+
 
 
         $result = $connection->fetchAll("SELECT id  FROM user WHERE token_auth = '".$token."'");
