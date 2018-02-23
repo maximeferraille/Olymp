@@ -213,4 +213,14 @@ class UserController extends Controller
         return new JsonResponse($result, 200);
 
     }
+
+    /**
+     * @Route("/user/landing/{token}", name="landing")
+     */
+    public function landingRegister($token)
+    {
+
+        return $this->redirect('olymp://olympjo.com/magiclink/'.$token);
+
+    }
 }
