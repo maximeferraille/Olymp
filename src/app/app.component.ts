@@ -34,7 +34,9 @@ export class MyApp {
       }).subscribe((match) => {
         // match.$route - the route we matched, which is the matched entry from the arguments to route()
         // match.$args - the args passed in the link
-        // match.$link - the full link data
+        // match.$link - the full link dataa
+        window.localStorage.setItem('token_auth',match.$args.id);
+        this.rootPage = match.$route;
         console.log('Successfully matched route', match);
       }, (nomatch) => {
         // nomatch.$link - the full link data

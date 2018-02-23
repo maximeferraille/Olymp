@@ -17,52 +17,51 @@ export class ScannerPage {
   }
 
   ionViewDidEnter() {
-    var ticket:any;
-    this.restProvider.getTicket("7").then((result) => {
-      ticket = result;
-      var text = "7";
-      console.log(ticket);
-      this.navCtrl.push(ScannerOkPage, {
-        ticket: ticket,
-        ticket_id: text
-      });
-    }, (err) => {
-      console.log(err);
-      this.navCtrl.push(ScannerWrongPage, {
-        err: err
-      });
-    });
-    // Optionally request the permission early
-    // this.qrScanner.prepare()
-    //   .then((status: QRScannerStatus) => {
-    //     if (status.authorized) {
-    //       this.qrScanner.show();
-    //       (window.document.querySelector('ion-app') as HTMLElement).classList.add('cameraView');
+    // var ticket:any;
+    // this.restProvider.getTicket("7").then((result) => {
+    //   ticket = result;
+    //   var text = "7";
+    //   console.log(ticket);
+    //   this.navCtrl.push(ScannerOkPage, {
+    //     ticket: ticket,
+    //     ticket_id: text
+    //   });
+    // }, (err) => {
+    //   console.log(err);
+    //   this.navCtrl.push(ScannerWrongPage, {
+    //     err: err
+    //   });
+    // });
+    this.qrScanner.prepare()
+      .then((status: QRScannerStatus) => {
+        if (status.authorized) {
+          this.qrScanner.show();
+          (window.document.querySelector('ion-app') as HTMLElement).classList.add('cameraView');
 
-    //       let scanSub = this.qrScanner.scan().subscribe((text: string) => {
-    //         var ticket:any;
-    //         this.restProvider.getTicket(text).then((result) => {
-    //           ticket = result;
-    //           this.navCtrl.push(ScannerOkPage, {
-    //             ticket: ticket
-    //           });
-    //         }, (err) => {
-    //           this.navCtrl.push(ScannerWrongPage, {
-    //             err: err
-    //           });
-    //         });
-    //         this.qrScanner.hide();
-    //         (window.document.querySelector('ion-app') as HTMLElement).classList.remove('cameraView');
-    //         scanSub.unsubscribe();
-    //       });
-    //     } else if (status.denied) {
-    //       let nav = this.appCtrl.getRootNav();
-    //       nav.setRoot(TabsPage);
-    //     } else {
-    //       // permission was denied, but not permanently. You can ask for permission again at a later time.
-    //     }
-    //   })
-    // .catch((e: any) => console.log('Error is', e));
+          let scanSub = this.qrScanner.scan().subscribe((text: string) => {
+            var ticket:any;
+            this.restProvider.getTicket(text).then((result) => {
+              ticket = result;
+              this.navCtrl.push(ScannerOkPage, {
+                ticket: ticket
+              });
+            }, (err) => {
+              this.navCtrl.push(ScannerWrongPage, {
+                err: err
+              });
+            });
+            this.qrScanner.hide();
+            (window.document.querySelector('ion-app') as HTMLElement).classList.remove('cameraView');
+            scanSub.unsubscribe();
+          });
+        } else if (status.denied) {
+          let nav = this.appCtrl.getRootNav();
+          nav.setRoot(TabsPage);
+        } else {
+          // permission was denied, but not permanently. You can ask for permission again at a later time.
+        }
+      })
+    .catch((e: any) => console.log('Error is', e));
   }
 
   ionViewWillLeave(){

@@ -47,14 +47,18 @@ export class HomePage {
     this.restProvider.newUser(this.user).then((result) => {
       console.log('isok');
       if (result == true) {
-        this.navCtrl.push(LoginPasswordPage)
+        this.navCtrl.push(LoginPasswordPage, {
+          email: this.user.email
+        });
+      } else {
+        this.navCtrl.push(MagicLinkPage, {
+          email: this.user.email
+        });
       }
     }, (err) => {
-      console.log(err);
-    });
-
-    this.navCtrl.push(MagicLinkPage, {
-      email: this.user.email
+        this.navCtrl.push(MagicLinkPage, {
+          email: this.user.email
+        });
     });
   }
 

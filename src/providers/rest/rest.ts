@@ -47,7 +47,9 @@ export class RestProvider {
 
   connect(data) {
     return new Promise((resolve, reject) => {
-      this.http.post(this.apiUrl+'/user/connect', data)
+      this.http.post(this.apiUrl+'/user/connect', data,{
+        headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+      })
         .subscribe(res => {
           resolve(res);
         }, (err) => {
