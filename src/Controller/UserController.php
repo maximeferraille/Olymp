@@ -201,6 +201,7 @@ class UserController extends Controller
             $stmt->execute();
 
             $data = [
+                "result" => "Identification réussie",
                 "id" => $result[0]["id"],
                 "token" => $token
             ];
@@ -209,8 +210,12 @@ class UserController extends Controller
             return new JsonResponse($data, 200);
         }
 
+        $data = [
+            "result" => "Identification raté",
 
-        return new JsonResponse($result, 200);
+        ];
+
+        return new JsonResponse($data, 200);
 
     }
 
