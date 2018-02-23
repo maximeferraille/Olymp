@@ -98,7 +98,7 @@ class TicketsController extends Controller
         header("Access-Control-Allow-Origin: *");
 
 
-        $sql = "SELECT * FROM tickets
+        $sql = "SELECT *, (tickets.id) as id FROM tickets
                 INNER JOIN events ON tickets.event_id = events.id
                 WHERE tickets.id = :id";
 
