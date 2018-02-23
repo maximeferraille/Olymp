@@ -178,7 +178,7 @@ class UserController extends Controller
 
         $mail = $request->request->get('mail');
         $pincode = $request->request->get('pincode');
-        $token_auth = $request->requestga->get('token_auth');
+        $token_auth = $request->request->get('token_auth');
 
 
 
