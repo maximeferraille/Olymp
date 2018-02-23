@@ -12,17 +12,6 @@ export class RestProvider {
   apiUrl = 'http://api.valentinchevreau.fr';
   constructor(public http: HttpClient) {}
 
-  connect(data) {
-    return new Promise((resolve, reject) => {
-      this.http.post(this.apiUrl+'/user/connect', data)
-        .subscribe(res => {
-          resolve(res);
-        }, (err) => {
-          reject(err);
-        });
-    });
-  }
-
   getUserTickets(data) {
     return new Promise((resolve, reject) => {
       this.http.get(this.apiUrl+'/ticket/user/'+data)
@@ -45,6 +34,28 @@ export class RestProvider {
     });
   }
 
+  setPincode(data) {
+    return new Promise((resolve, reject) => {
+      this.http.post(this.apiUrl+'/user/pincode',data)
+        .subscribe(res => {
+          resolve(res);
+        }, (err) => {
+          reject(err);
+        });
+    });
+  }
+
+  connect(data) {
+    return new Promise((resolve, reject) => {
+      this.http.post(this.apiUrl+'/user/connect', data)
+        .subscribe(res => {
+          resolve(res);
+        }, (err) => {
+          reject(err);
+        });
+    });
+  }
+
   getTicket(data) {
     return new Promise((resolve, reject) => {
       this.http.get(this.apiUrl+'/ticket/'+data)
@@ -56,9 +67,9 @@ export class RestProvider {
     });
   }
 
-  getAllTickets(data) {
+  getAllTickets() {
     return new Promise((resolve, reject) => {
-      this.http.get(this.apiUrl+'/tickets/all/'+data)
+      this.http.get(this.apiUrl+'/tickets/all')
         .subscribe(res => {
           resolve(res);
         }, (err) => {
