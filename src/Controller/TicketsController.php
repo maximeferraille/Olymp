@@ -46,7 +46,7 @@ class TicketsController extends Controller
         header("Access-Control-Allow-Origin: *");
 
 
-        $tickets = $connection->fetchAll("SELECT *  FROM tickets INNER JOIN events ON tickets.event_id = events.id WHERE status = 'B'");
+        $tickets = $connection->fetchAll("SELECT * , (tickets.id) FROM tickets INNER JOIN events ON tickets.event_id = events.id WHERE status = 'B'");
 
 
 
