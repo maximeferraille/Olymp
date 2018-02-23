@@ -23,6 +23,28 @@ export class RestProvider {
     });
   }
 
+  getUserId(data) {
+    return new Promise((resolve, reject) => {
+      this.http.get(this.apiUrl+'/user/getuserid/'+data)
+        .subscribe(res => {
+          resolve(res);
+        }, (err) => {
+          reject(err);
+        });
+    });
+  }
+
+  buyTicket(data){
+    return new Promise((resolve, reject) => {
+      this.http.post(this.apiUrl+'/ticket/buy/',data)
+        .subscribe(res => {
+          resolve(res);
+        }, (err) => {
+          reject(err);
+        });
+    });
+  }
+
   newUser(data) {
     return new Promise((resolve, reject) => {
       this.http.get(this.apiUrl+'/user/new?mail='+data.email)

@@ -17,7 +17,7 @@
 </ion-header>
 
 
-<ion-content padding>
+<ion-content padding class="app-container">
   <ion-grid>
     <ion-row>
       <p class="search-label">Search by event or location</p>
@@ -27,7 +27,7 @@
           <ion-searchbar placeholder="Search by event or location" class="app-searchbar" (ionInput)="getItems($event)"></ion-searchbar>
       </ion-col>
       <ion-col col-2>
-        <button class="app-geoloc" (click)="moreSearch()">
+        <button class="app-geoloc">
           <ion-icon name="Add"></ion-icon>
         </button>
       </ion-col>
@@ -36,11 +36,18 @@
 
   <ion-list>
       <ion-item *ngFor="let item of items">
-        <ion-label>{{ item.description_name }}</ion-label>
-        <ion-label>{{ item.cluster_name }}</ion-label>
-        <ion-label>{{ item.seat_number }}</ion-label>
-        <ion-label>{{ item.start_date }} | {{ item.start_time }}</ion-label>
-        <ion-label>{{ item.start_price }}</ion-label>
+          <div class="item-left">
+              <h2 class="item-title">{{ item.description_name }}</h2>
+              <p class="item-cluster">{{ item.cluster_name }}</p>
+              <p class="item-seat">Seat <span class="item-seat--number">{{ item.seat_number }}</span></p>
+              <p class="item-date">{{ item.start_date }} | {{ item.start_time }}</p>
+          </div>
+          <div class="item-right">
+              <p class="item-price">{{ item.start_price }} €</p>
+              <button class="item-ticketpreview" (click)="ticketSelected(item.id)">
+                <ion-icon class="item-arrow" name="ArrowRight"></ion-icon>
+              </button>
+          </div>
       </ion-item>
     </ion-list>
 </ion-content>

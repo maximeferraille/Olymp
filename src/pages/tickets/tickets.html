@@ -7,12 +7,84 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Tickets</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
+    <!-- <div class="ticket-container">
+        <div class="ticket-top">
+          <div class="ticket-top__left">
+              <p class="ticket-title">{{ ticket.description_name }}</p>
+              <p class="ticket-place">{{ ticket.venue_name }}</p>
+              <p class="ticket-seat">Seat <span class="ticket-seat__number">{{ ticket.seat_number }}</span></p>
+          </div>
+          <div class="ticket-top__right">
+              <ion-icon style="color:black;" name="Clock"></ion-icon>
+              <p class="ticket-date">{{ ticket.start_date }}</p>
+              <p class="ticket-time">{{ ticket.start_time }}</p>
+          </div>
+        </div>
 
+        <div class="separator">
+          <div class="circle-left"></div>
+          <div class="border"></div>
+          <div class="circle-right"></div>
+        </div>
+
+        <div class="ticket-middle">
+            <ngx-qrcode [qrc-value]="ticket_id"></ngx-qrcode>
+        </div>
+
+        <div class="separator">
+            <div class="border"></div>
+        </div>
+
+        <div class="ticket-middle2">
+          <div class="ticket-middle2__left">
+            <p class="ticket-owner">Owner</p>
+            <p class="ticket-userId">{{ user_id }}</p>
+          </div>
+          <div *ngIf=" ticket.status == 'B'" class="ticket-middle2__right">
+            <button class="ticket-button" (click)="buyTicket">
+              Buy
+            </button>
+          </div>
+          <div *ngIf=" ticket.status != 'B'" class="ticket-middle2__right">
+              <p class="ticket-button">Not for sale</p>
+            </div>
+        </div>
+
+        <div class="separator">
+            <div class="border"></div>
+        </div>
+
+        <div class="ticket-bottom">
+            <ion-grid>
+                <ion-row class="ticket-bottom--firstCol">
+                  <ion-col>
+                    ID
+                  </ion-col>
+                  <ion-col>
+                    Status
+                  </ion-col>
+                  <ion-col>
+                    Price
+                  </ion-col>
+                </ion-row>
+                <ion-row class="ticket-bottom--secondCol">
+                    <ion-col>
+                      {{ ticket_id }}
+                    </ion-col>
+                    <ion-col>
+                      {{ ticket.status }}
+                    </ion-col>
+                    <ion-col>
+                      {{ ticket.start_price }} €
+                    </ion-col>
+                  </ion-row>
+              </ion-grid>
+        </div>
+    </div> -->
 </ion-content>

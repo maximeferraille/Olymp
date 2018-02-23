@@ -32,11 +32,18 @@ export class GeneratePasswordPage {
     if(this.passcode.length < 4) {
       this.passcode = this.passcode + value;
       if(this.passcode.length == 4) {
-        var data = {pincode: this.passcode, id: this.tokenAuth};
-        this.restProvider.connect(data).then((result) => {
-            console.log(result);
-            let nav = this.appCtrl.getRootNav();
-            nav.setRoot(TabsPage);
+        this.restProvider.getUserId(this.tokenAuth).then((results) => {
+          var userId:any;
+          userId = results;
+          var data = {pincode: this.passcode, id: userId.id};
+          this.restProvider.connect(data).then((result) => {
+              console.log(result);
+              let nav = this.appCtrl.getRootNav();
+              nav.setRoot(TabsPage);
+          }, (err) => {
+            console.log(err);
+            this.err = err;
+          });
         }, (err) => {
           console.log(err);
           this.err = err;

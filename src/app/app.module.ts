@@ -18,6 +18,7 @@ import { ScannerOkPage } from '../pages/scanner-ok/scanner-ok';
 import { ScannerWrongPage } from '../pages/scanner-wrong/scanner-wrong';
 import { ScannerPage } from '../pages/scanner/scanner';
 import { TicketsPage } from '../pages/tickets/tickets';
+import { TicketPreviewPage } from '../pages/ticket-preview/ticket-preview';
 import { ProfilPage } from '../pages/profil/profil';
 import { MagicLinkPage } from '../pages/magic-link/magic-link';
 import { GeneratePasswordPage } from '../pages/generate-password/generate-password';
@@ -41,6 +42,7 @@ import { NgxQRCodeModule } from 'ngx-qrcode2';
     LoginPasswordPage,
     ScannerOkPage,
     ScannerWrongPage,
+    TicketPreviewPage,
   ],
   imports: [
     BrowserModule,
@@ -63,6 +65,7 @@ import { NgxQRCodeModule } from 'ngx-qrcode2';
     LoginPasswordPage,
     ScannerOkPage,
     ScannerWrongPage,
+    TicketPreviewPage,
   ],
   providers: [
     Deeplinks,

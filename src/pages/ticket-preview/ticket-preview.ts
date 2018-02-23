@@ -1,12 +1,19 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
+/**
+ * Generated class for the TicketsPage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
+
 @IonicPage()
 @Component({
-  selector: 'page-scanner-ok',
-  templateUrl: 'scanner-ok.html',
+  selector: 'page-ticket-preview',
+  templateUrl: 'ticket-preview.html',
 })
-export class ScannerOkPage {
+export class TicketPreviewPage {
   ticket:any;
   ticket_id:string;
   createdCode = null;
@@ -20,7 +27,7 @@ export class ScannerOkPage {
   }
 
   buyTicket(){
-    
+
   }
 
   ionViewDidEnter() {
